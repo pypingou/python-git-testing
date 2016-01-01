@@ -14,7 +14,7 @@ def browse_history():
     head = repo.head.target
 
     for commit in repo.walk(head, pygit2.GIT_SORT_TIME):
-        pass
+        commit.message.encode('utf-8') != ''
 
 
 def get_commit(commithash):
@@ -31,7 +31,6 @@ def get_repo_length():
     print(cnt)
 
 
-
 if __name__ == '__main__':
     print('Browse entire history')
     st = datetime.datetime.utcnow()
@@ -45,4 +44,7 @@ if __name__ == '__main__':
         get_commit('e37e112de3ac64032df45c2db0dbe1e8f1af86b4')
     print('    Ran for %s' % (datetime.datetime.utcnow() - st))
 
-#    get_repo_length()
+    print('Number of commits:')
+    st = datetime.datetime.utcnow()
+    get_repo_length()
+    print('    Ran for %s' % (datetime.datetime.utcnow() - st))
